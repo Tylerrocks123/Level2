@@ -89,6 +89,15 @@ context.clearRect(0,0,canvas.width,canvas.height);
     {
         player1.y -= 4;
     }
+    
+      if(player1.top() < 0)
+    {
+        player1.y = player1.height / 2;
+    }
+        if(player1.bottom() > canvas.height)
+    {
+        player1.y = canvas.height - player1.height / 2;
+    }
     //player.drawCircle();
     //npc1.drawCircle();
     //npc2.drawCircle();
