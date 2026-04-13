@@ -87,11 +87,14 @@ context.clearRect(0,0,canvas.width,canvas.height);
  ball.move();
     if (ball.x > canvas.width + ball.width/2)
     {
-        ball.vx *= -1
+        ball.x = 50;
+        ball.y = canvas.height/2;
     }
     if (ball.x < 0 + ball.width/2)
     {
-        ball.vx = 2;
+        ball.x = 50;
+        ball.y = canvas.height/2;
+        ball.vx = 5;
     }
     if (ball.y > canvas.height + ball.height/2)
     {
@@ -99,17 +102,17 @@ context.clearRect(0,0,canvas.width,canvas.height);
     }
     if (ball.y < 0 + ball.height/2)
     {
-        ball.vy = 2;
+        ball.vy = 5;
     }
 
 
     if(w)
     {
-        player1.y += 4;
+        player1.y -= 4;
     }
     if(s)
     {
-        player1.y -= 4;
+        player1.y += 4;
     }
 
 
