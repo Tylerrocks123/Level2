@@ -15,7 +15,7 @@ ball = new GameObject(50,canvas.height/2,100,100,"#00ff00");
 player1.vx = 0;
 player1.vy = 0;
 ball.vx = 5;
-ball.vy = 5;
+ball.vy = 0;
 
 timer = setInterval(animate, interval);
 
@@ -87,14 +87,15 @@ context.clearRect(0,0,canvas.width,canvas.height);
  ball.move();
     if (ball.x > canvas.width + ball.width/2)
     {
-        ball.x = 50;
+        ball.x = 100;
         ball.y = canvas.height/2;
+        ball.vy = 4
     }
     if (ball.x < 0 + ball.width/2)
     {
-        ball.x = 50;
+        ball.x = 100;
         ball.y = canvas.height/2;
-        ball.vx = 5;
+        ball.vx = 4;
     }
     if (ball.y > canvas.height + ball.height/2)
     {
@@ -102,7 +103,28 @@ context.clearRect(0,0,canvas.width,canvas.height);
     }
     if (ball.y < 0 + ball.height/2)
     {
-        ball.vy = 5;
+        ball.vy = 4;
+    }
+
+    if(ball.collisionCheck(player1))
+    {
+        ball.x = player1.right() + ball.width/2;
+
+    if(ball.y < player1.y - player1.height/6)
+    {
+        ball.vx = 4;
+        ball.vy = -4;
+    }
+    else if(ball.y > player1.y + player1.height/6)
+    {
+        ball.vx = 4;
+        ball.vy = 4;
+    }
+    else
+    {
+        ball.vx = 4;
+        ball.vy = 0;
+    }
     }
 
 
