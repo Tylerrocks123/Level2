@@ -84,26 +84,28 @@ else
 */
 context.clearRect(0,0,canvas.width,canvas.height);
 
- ball.move();
-    if (ball.x > canvas.width + ball.width/2)
+ball.move();
+    if (ball.x > canvas.width - ball.width/2)
     {
-        ball.x = 100;
-        ball.y = canvas.height/2;
-        ball.vy = 4
+    ball.x = canvas.width - ball.width/2;
+    ball.vx *= -1;
     }
-    if (ball.x < 0 + ball.width/2)
+    if (ball.x < 0 - ball.width/2)
     {
-        ball.x = 100;
-        ball.y = canvas.height/2;
-        ball.vx = 4;
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height / 2;
+    ball.vx = 4;
+    ball.vy = 0;
     }
-    if (ball.y > canvas.height + ball.height/2)
+    if (ball.y > canvas.height - ball.height/2)
     {
-        ball.vy *= -1
+    ball.y = canvas.height - ball.height/2;
+    ball.vy *= -1;
     }
-    if (ball.y < 0 + ball.height/2)
+    if (ball.y < ball.height/2)
     {
-        ball.vy = 4;
+    ball.y = ball.height/2;
+    ball.vy *= -1;
     }
 
     if(ball.collisionCheck(player1))
